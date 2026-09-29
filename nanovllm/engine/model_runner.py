@@ -18,7 +18,8 @@ class ModelRunner:
         self.config = config
         hf_config = config.hf_config
         self.block_size = config.kvcache_block_size
-        self.enforce_eager = config.enforce_eager
+        # V0 双模型路径只运行 eager；普通目标模型路径仍可捕获 CUDA Graph。
+        self.enforce_eager = config.enforce_eager or config.draft_model is not None
         self.world_size = config.tensor_parallel_size
         self.rank = rank
         self.event = event
@@ -28,8 +29,7 @@ class ModelRunner:
         default_dtype = torch.get_default_dtype()
         torch.set_default_dtype(hf_config.dtype)
         torch.set_default_device("cuda")
-        self.model = Qwen3ForCausalLM(hf_config)
-        load_model(self.model, config.model)
+        self.load_models()
         self.sampler = Sampler()
         self.warmup_model()
         self.allocate_kv_cache()
@@ -46,6 +46,11 @@ class ModelRunner:
                 dist.barrier()
                 self.shm = SharedMemory(name="nanovllm")
                 self.loop()
+
+    def load_models(self):
+        """子类在同一 runner / CUDA context 中加载第二个模型。"""
+        self.model = Qwen3ForCausalLM(self.config.hf_config)
+        load_model(self.model, self.config.model)
 
     def exit(self):
         if self.world_size > 1:
@@ -231,7 +236,8 @@ class ModelRunner:
         context_lens = torch.zeros(max_bs, dtype=torch.int32)
         block_tables = torch.zeros(max_bs, max_num_blocks, dtype=torch.int32)
         outputs = torch.zeros(max_bs, hf_config.hidden_size)
-        self.graph_bs = [1, 2, 4, 8] + list(range(16, max_bs + 1, 16))
+        # max_num_seqs=1 也应能捕获：不能对长度 1 的缓冲区用 bs=8 的上下文。
+        self.graph_bs = sorted({x for x in [1, 2, 4, 8] + list(range(16, max_bs + 1, 16)) if x <= max_bs} | {max_bs})
         self.graphs = {}
         self.graph_pool = None
 

@@ -1,0 +1,97 @@
+{
+  "recorded_at": "2026-09-29T11:44:24.148403+00:00",
+  "python": "3.12.3",
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "triton": "3.4.0",
+    "transformers": "4.57.6",
+    "flash-attn": "2.8.3",
+    "xxhash": "4.0.1",
+    "safetensors": "0.8.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5090, 580.105.08, 32607 MiB",
+  "baseline_commit": "a468976371c1819ca0ba89d3f05999cbcbc848d3",
+  "v0_source_note": "V0 measured from the working tree derived from baseline_commit; the file hashes below identify the implementation, not the unmodified baseline.",
+  "source_files_sha256": {
+    "nanovllm/.ipynb_checkpoints/config-checkpoint.py": "b8683b7206615ff04db15955cd1820c68814ef829f4b1738edec6936b7f014de",
+    "nanovllm/__init__.py": "42996c92a5c18d1e333eb57c7d670b2eac53b132df81d53cc6286a89125c9d77",
+    "nanovllm/config.py": "4a4d0c00037d0809831b797c35ed02575d973d474325d25c0c1a0c1810929c2c",
+    "nanovllm/engine/block_manager.py": "d0240374f589eaa85c4c7923b8970f2635ab7bc73adc5044fa2d273955b54242",
+    "nanovllm/engine/llm_engine.py": "b930907449280857482f11fa24ae509c9d557fa75759cdf61e78824e2d43e561",
+    "nanovllm/engine/model_runner.py": "61410a7f2a90ca12ecd74ef8dd8ccd1414046bf33a8db0f80a433e784c094fa2",
+    "nanovllm/engine/scheduler.py": "a121ff81e7de3a71e9532ca33478917b7e434ff4a40c86912fb278f0bd6f35a4",
+    "nanovllm/engine/sequence.py": "f01cbcaa40043dd24c697f1affaa2eb64f430b93c42d97fd73afe7ae30187110",
+    "nanovllm/engine/speculative_runner.py": "4ee74a66cc14675ce9d05fe95388f788bbbf828a567211606777f0afaaec5bc7",
+    "nanovllm/engine/speculative_sampling.py": "af96e7d00115bf3c7dc7f6fa5f2c8b0963f3fa2a17ef7069570d97c71e1fcdad",
+    "nanovllm/engine/speculative_scheduler.py": "43d5619046b02665ed06a94495417f7da78709876e7ed6ad2e27c10c1c5c87c9",
+    "nanovllm/layers/activation.py": "9dca7e6fae963ecb9d9d582b539d1c18e47825e103dac8c04058d6def8924c64",
+    "nanovllm/layers/attention.py": "00c2f52cd428bc2f82ff90ef8cbc96b0959a225daaeb035e9e0eaf63a85bfbba",
+    "nanovllm/layers/embed_head.py": "0ef6ec8af0c5ab32d4ae5a770768a83750e826e04da59a65ea4632b541cadd04",
+    "nanovllm/layers/layernorm.py": "a661fc4eeef736f29308c736da7d91cbc9d896d662c990a3f887dc6f6c8d7169",
+    "nanovllm/layers/linear.py": "9fe0d9917e15603d4af435591ba8b4c5f45b253ee1a825607061ca73d50470cf",
+    "nanovllm/layers/rotary_embedding.py": "82b59b6a5d32e3465c4c9207e690a7e9b5c38219357f1920fa05ff81f7ae3836",
+    "nanovllm/layers/sampler.py": "d0c23b938150b87a1fa0046c534a2eab96e233725a51a512c4037af9055ca520",
+    "nanovllm/llm.py": "ffe74fe7f64ba5169471a17596757b8d8f309e75f4db7040ac41b84db2e38179",
+    "nanovllm/models/qwen3.py": "6156b3477117094f657a6f609df3c051393a23cce1405af6b88dafddb49acd29",
+    "nanovllm/sampling_params.py": "06f0f52ae080e54c907e1b1a90b32c39694c6609d4fefa0e4b25c16f306fcff4",
+    "nanovllm/utils/context.py": "baa992697536950ad653571cb93a44df1868450713f8e623bad160bd5ecd6468",
+    "nanovllm/utils/loader.py": "9695c333ed39c83f0e77648fef61c21342ebc604d459c3ca1b7bb45a14991f19",
+    "tests/test_speculative.py": "63c3b6411de2c71cad632a05717aaa9f73677ad18144ceeb47f36e1ca9617226",
+    "tests/validate_v0_gpu.py": "cbf356f189836d22df3de96bcf084ccd065e256286802cabde81cc94d7d90f56",
+    "benchmarks/baseline.py": "bc262e45a773e808b9ad55d22561d8cd27be42a778f8ec1722b2e0eb2b583ba9"
+  },
+  "models": [
+    {
+      "name": "Qwen/Qwen3-4B",
+      "source": "https://modelscope.cn/models/Qwen/Qwen3-4B",
+      "files": {
+        "model-00001-of-00003.safetensors": {
+          "bytes": 3957900840,
+          "sha256": "328a91d3122359d5547f9d79521205bc0a46e1f79a792dfe650e99fc2d651223"
+        },
+        "model-00002-of-00003.safetensors": {
+          "bytes": 3987450520,
+          "sha256": "6cd087b316306a68c562436b5492edbcf6e16c6dba3a1308279caa5a58e21ca5"
+        },
+        "model-00003-of-00003.safetensors": {
+          "bytes": 99630640,
+          "sha256": "e4bf436957184f4eeb86a80e9db394503f1f56446b2e6b7edeac5b81470f4ca1"
+        },
+        "config.json": {
+          "bytes": 726,
+          "sha256": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a"
+        },
+        "tokenizer.json": {
+          "bytes": 11422654,
+          "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        "tokenizer_config.json": {
+          "bytes": 9732,
+          "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+        }
+      }
+    },
+    {
+      "name": "Qwen/Qwen3-0.6B",
+      "source": "https://modelscope.cn/models/Qwen/Qwen3-0.6B",
+      "files": {
+        "model.safetensors": {
+          "bytes": 1503300328,
+          "sha256": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b"
+        },
+        "config.json": {
+          "bytes": 726,
+          "sha256": "660db3b73d788119c04535e48cf9be5f55bc3100841a718637ae695b442f27dd"
+        },
+        "tokenizer.json": {
+          "bytes": 11422654,
+          "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        "tokenizer_config.json": {
+          "bytes": 9732,
+          "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+        }
+      }
+    }
+  ]
+}

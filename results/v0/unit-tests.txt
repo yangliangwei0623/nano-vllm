@@ -1,0 +1,19 @@
+test_attention_mode_does_not_force_last_logits (test_speculative.InterfaceTests.test_attention_mode_does_not_force_last_logits) ... ok
+test_unsupported_combinations_fail_before_loading_weights (test_speculative.InterfaceTests.test_unsupported_combinations_fail_before_loading_weights) ... ok
+test_actual_round_state_machine_for_every_rejection_position (test_speculative.RunnerStateTests.test_actual_round_state_machine_for_every_rejection_position)
+固定模型输出，只替换前向计算，真实执行 runner 的提案/回退/补算代码。 ... ok
+test_exact_distribution (test_speculative.SamplingTests.test_exact_distribution) ... ok
+test_greedy_acceptance_lengths (test_speculative.SamplingTests.test_greedy_acceptance_lengths) ... ok
+test_stochastic_all_accept_and_no_candidates (test_speculative.SamplingTests.test_stochastic_all_accept_and_no_candidates) ... ok
+test_stochastic_disjoint_support_and_immutable_probabilities (test_speculative.SamplingTests.test_stochastic_disjoint_support_and_immutable_probabilities) ... ok
+test_stochastic_partial_acceptance (test_speculative.SamplingTests.test_stochastic_partial_acceptance) ... ok
+test_temperature_validation_and_mixed_greedy (test_speculative.SamplingTests.test_temperature_validation_and_mixed_greedy) ... ok
+test_eos_truncates_accepted_suffix_and_releases_pages (test_speculative.SchedulerTests.test_eos_truncates_accepted_suffix_and_releases_pages) ... ok
+test_ignore_eos_and_queue (test_speculative.SchedulerTests.test_ignore_eos_and_queue) ... ok
+test_output_and_context_limits (test_speculative.SchedulerTests.test_output_and_context_limits) ... ok
+test_partial_rollback_across_page_boundary (test_speculative.SchedulerTests.test_partial_rollback_across_page_boundary) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.165s
+
+OK

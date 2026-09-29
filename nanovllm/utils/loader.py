@@ -11,7 +11,19 @@ def default_weight_loader(param: nn.Parameter, loaded_weight: torch.Tensor):
 
 def load_model(model: nn.Module, path: str):
     packed_modules_mapping = getattr(model, "packed_modules_mapping", {})
-    for file in glob(os.path.join(path, "*.safetensors")):
+    files = glob(os.path.join(path, "*.safetensors"))
+    if not files:
+        raise ValueError(f"No safetensors weights found in {path}")
+    # 下载中断时可能只剩一个 shard，不能把其余随机初始化权重当作有效模型运行。
+    index_path = os.path.join(path, "model.safetensors.index.json")
+    if os.path.isfile(index_path):
+        import json
+        with open(index_path) as f:
+            expected = set(json.load(f)["weight_map"].values())
+        missing = expected - {os.path.basename(file) for file in files}
+        if missing:
+            raise ValueError(f"Missing model weight shards: {sorted(missing)}")
+    for file in files:
         with safe_open(file, "pt", "cpu") as f:
             for weight_name in f.keys():
                 for k in packed_modules_mapping:

@@ -1,0 +1,267 @@
+{
+  "arguments": {
+    "model": "/root/autodl-tmp/models/Qwen3-4B",
+    "draft": "/root/autodl-tmp/models/Qwen3-0.6B",
+    "mode": "eager",
+    "batches": [
+      1
+    ],
+    "input_lengths": [
+      128,
+      1024
+    ],
+    "output_tokens": 256,
+    "temperature": 0.6,
+    "repeats": 5,
+    "output": "results/v0/speculative-eager.json"
+  },
+  "config": {
+    "max_num_seqs": 8,
+    "max_model_len": 2048,
+    "max_num_batched_tokens": 8192,
+    "gpu_memory_utilization": 0.8,
+    "enforce_eager": true,
+    "draft_model": "/root/autodl-tmp/models/Qwen3-0.6B"
+  },
+  "python": "3.12.3",
+  "torch": "2.8.0+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "dtype": "torch.bfloat16",
+  "source": "/root/autodl-tmp/nano-vllm",
+  "initialization_seconds": 5.391041103750467,
+  "warmup": {
+    "full_generations_per_cell": 1,
+    "additional_output_budgets": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "script_sha256": "bc262e45a773e808b9ad55d22561d8cd27be42a778f8ec1722b2e0eb2b583ba9",
+  "memory_plan": {
+    "num_blocks": 245,
+    "combined_bytes_per_block": 67108864,
+    "kv_bytes": 16441671680,
+    "runtime_peak_bytes": 172000256,
+    "extra_reserve_bytes": 268435456,
+    "resident_allocated_bytes": 9323314176
+  },
+  "source_commit": "a468976371c1819ca0ba89d3f05999cbcbc848d3",
+  "prompt_source": "self-authored TEXTS in benchmarks/baseline.py; repeated then token-truncated",
+  "prefix_cache": "cleared before every warmup and trial",
+  "cells": [
+    {
+      "batch": 1,
+      "input_length": 128,
+      "prompt_ids_sha256": "cc9dc3d145d07d59be3324a24616170683f9817f0112e5a82065e6741fed4415",
+      "decode_ms_per_token_median": 35.03323553823957,
+      "decode_ms_per_token_min": 24.244075838257285,
+      "decode_ms_per_token_max": 38.88603465668127,
+      "trials": [
+        {
+          "total_seconds": 9.661521939560771,
+          "prefill_first_token_seconds": 0.04624557867646217,
+          "decode_seconds": 9.615276360884309,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 37.70696612111494,
+          "end_to_end_tokens_per_second": 26.496860598304266,
+          "peak_allocated_bytes": 25777179648,
+          "speculative_counters": {
+            "rounds": 91,
+            "proposed": 361,
+            "accepted": 164,
+            "repair_calls": 25,
+            "repair_tokens": 25,
+            "committed": 256,
+            "accepted_committed": 164
+          }
+        },
+        {
+          "total_seconds": 8.980587437748909,
+          "prefill_first_token_seconds": 0.04711237549781799,
+          "decode_seconds": 8.933475062251091,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 35.03323553823957,
+          "end_to_end_tokens_per_second": 28.505930349715456,
+          "peak_allocated_bytes": 25777179648,
+          "speculative_counters": {
+            "rounds": 83,
+            "proposed": 326,
+            "accepted": 172,
+            "repair_calls": 32,
+            "repair_tokens": 32,
+            "committed": 256,
+            "accepted_committed": 172
+          }
+        },
+        {
+          "total_seconds": 6.242599382996559,
+          "prefill_first_token_seconds": 0.04676409624516964,
+          "decode_seconds": 6.1958352867513895,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 24.297393281378,
+          "end_to_end_tokens_per_second": 41.00855818127407,
+          "peak_allocated_bytes": 25777179648,
+          "speculative_counters": {
+            "rounds": 52,
+            "proposed": 206,
+            "accepted": 203,
+            "repair_calls": 51,
+            "repair_tokens": 51,
+            "committed": 256,
+            "accepted_committed": 203
+          }
+        },
+        {
+          "total_seconds": 6.229154895991087,
+          "prefill_first_token_seconds": 0.046915557235479355,
+          "decode_seconds": 6.182239338755608,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 24.244075838257285,
+          "end_to_end_tokens_per_second": 41.09706762385289,
+          "peak_allocated_bytes": 25777179648,
+          "speculative_counters": {
+            "rounds": 52,
+            "proposed": 204,
+            "accepted": 203,
+            "repair_calls": 51,
+            "repair_tokens": 51,
+            "committed": 256,
+            "accepted_committed": 203
+          }
+        },
+        {
+          "total_seconds": 9.96279688179493,
+          "prefill_first_token_seconds": 0.04685804434120655,
+          "decode_seconds": 9.915938837453723,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 38.88603465668127,
+          "end_to_end_tokens_per_second": 25.69559562815038,
+          "peak_allocated_bytes": 25777179648,
+          "speculative_counters": {
+            "rounds": 92,
+            "proposed": 365,
+            "accepted": 163,
+            "repair_calls": 26,
+            "repair_tokens": 26,
+            "committed": 256,
+            "accepted_committed": 163
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "input_length": 1024,
+      "prompt_ids_sha256": "f95f6cd13b516d9f2d674c1096652dc08ca962dd0103eb4abea51480d60345e4",
+      "decode_ms_per_token_median": 24.10389545063178,
+      "decode_ms_per_token_min": 24.04648021740072,
+      "decode_ms_per_token_max": 24.460793761353866,
+      "trials": [
+        {
+          "total_seconds": 6.195613607764244,
+          "prefill_first_token_seconds": 0.05502797290682793,
+          "decode_seconds": 6.140585634857416,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 24.080727979833004,
+          "end_to_end_tokens_per_second": 41.31955544793576,
+          "peak_allocated_bytes": 25852039168,
+          "speculative_counters": {
+            "rounds": 51,
+            "proposed": 204,
+            "accepted": 204,
+            "repair_calls": 51,
+            "repair_tokens": 51,
+            "committed": 256,
+            "accepted_committed": 204
+          }
+        },
+        {
+          "total_seconds": 6.21740604005754,
+          "prefill_first_token_seconds": 0.05550588481128216,
+          "decode_seconds": 6.161900155246258,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 24.16431433429905,
+          "end_to_end_tokens_per_second": 41.17472758746038,
+          "peak_allocated_bytes": 25852039168,
+          "speculative_counters": {
+            "rounds": 51,
+            "proposed": 204,
+            "accepted": 204,
+            "repair_calls": 51,
+            "repair_tokens": 51,
+            "committed": 256,
+            "accepted_committed": 204
+          }
+        },
+        {
+          "total_seconds": 6.201480992138386,
+          "prefill_first_token_seconds": 0.054987652227282524,
+          "decode_seconds": 6.146493339911103,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 24.10389545063178,
+          "end_to_end_tokens_per_second": 41.28046192909904,
+          "peak_allocated_bytes": 25852039168,
+          "speculative_counters": {
+            "rounds": 51,
+            "proposed": 204,
+            "accepted": 204,
+            "repair_calls": 51,
+            "repair_tokens": 51,
+            "committed": 256,
+            "accepted_committed": 204
+          }
+        },
+        {
+          "total_seconds": 6.186885796487331,
+          "prefill_first_token_seconds": 0.05503334105014801,
+          "decode_seconds": 6.131852455437183,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 24.04648021740072,
+          "end_to_end_tokens_per_second": 41.377844754358755,
+          "peak_allocated_bytes": 25852039168,
+          "speculative_counters": {
+            "rounds": 51,
+            "proposed": 204,
+            "accepted": 204,
+            "repair_calls": 51,
+            "repair_tokens": 51,
+            "committed": 256,
+            "accepted_committed": 204
+          }
+        },
+        {
+          "total_seconds": 6.29252359084785,
+          "prefill_first_token_seconds": 0.05502118170261383,
+          "decode_seconds": 6.237502409145236,
+          "output_tokens": 256,
+          "decode_tokens": 255,
+          "decode_ms_per_token": 24.460793761353866,
+          "end_to_end_tokens_per_second": 40.68320067521697,
+          "peak_allocated_bytes": 25852039168,
+          "speculative_counters": {
+            "rounds": 51,
+            "proposed": 204,
+            "accepted": 204,
+            "repair_calls": 51,
+            "repair_tokens": 51,
+            "committed": 256,
+            "accepted_committed": 204
+          }
+        }
+      ]
+    }
+  ]
+}

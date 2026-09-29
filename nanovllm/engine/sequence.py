@@ -23,6 +23,8 @@ class Sequence:
         self.num_tokens = len(self.token_ids)
         self.num_prompt_tokens = len(token_ids)
         self.num_cached_tokens = 0
+        # 两套 KV cache 的有效前缀长度；候选写入后可能暂时超过已提交长度。
+        self.num_draft_cached_tokens = 0
         self.num_scheduled_tokens = 0
         self.is_prefill = True
         self.block_table = []

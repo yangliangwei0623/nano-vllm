@@ -43,7 +43,15 @@ outputs = llm.generate(prompts, sampling_params)
 outputs[0]["text"]
 ```
 
-## Benchmark
+## Speculative decoding (V0)
+
+Single-GPU, single-active-request Qwen3 target/draft decoding supports greedy
+(`temperature=0`) and exact rejection sampling. See the [annotated V0 guide](docs/speculative-v0.md)
+for the KV rollback invariant, runnable examples, tests and baseline measurements.
+Measured performance and numerical near-tie analysis are in the [V0 results](docs/v0-results.md).
+Installation on RTX 5090 using domestic mirrors is documented [here](docs/setup-rtx5090.md).
+
+## Original benchmark
 
 See `bench.py` for benchmark.
 
